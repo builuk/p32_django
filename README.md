@@ -13,3 +13,10 @@ pip install django
 django-admin startproject mysite .
 
 python manage.py runserver
+
+python manage.py migrate
+
+python manage.py createsuperuser
+# ім'я користувача, email (можна пропустити), пароль
+
+python manage.py startapp blog
