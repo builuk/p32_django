@@ -8,4 +8,4 @@ class Post(models.Model):
     is_published = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title
+        return f"{self.title} - {self.content}"

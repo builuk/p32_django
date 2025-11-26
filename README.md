@@ -20,3 +20,33 @@ python manage.py createsuperuser
 # ім'я користувача, email (можна пропустити), пароль
 
 python manage.py startapp blog
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py shell
+
+from blog.models import Post
+
+
+
+
+post = Post.objects.create(
+    title="Мій перший пост",
+    content="Текст першого поста",
+    is_published=True,
+)
+post.save()
+
+post = Post(
+    title="Чернетка",
+    content="Це чернетка",
+)
+post.save()
+
+
+
+
+posts = Post.objects.all()
+posts
+<QuerySet [<Post: Мій перший пост>, <Post: Чернетка>]>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <title>Блог — список постів</title>
+</head>
+<body>
+    <h1>Блог</h1>
+
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h2>
+                        <a href="{% url 'blog:post_detail' post.pk %}">
+                            {{ post.title }}
+                        </a>
+                    </h2>
+                    <p><small>Створено: {{ post.created_at }}</small></p>
+                    <p>
+                        {{ post.content|truncatechars:150 }}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Поки що немає опублікованих постів.</p>
+    {% endif %}
+</body>
+</html>
