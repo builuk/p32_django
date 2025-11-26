@@ -7,7 +7,7 @@
 <body>
     <h1>{{ post.title }}</h1>
 
-    <p><small>Створено: {{ post.created_at }} | Оновлено: {{ post.updated_at }}</small></p>
+    <p><small>Створено: {{ post.create_at }} | Оновлено: {{ post.update_at }}</small></p>
 
     <article>
         <p>{{ post.content|linebreaks }}</p>
