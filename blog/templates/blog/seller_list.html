@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller</title>
+</head>
+<body>
+<h1>Sellers</h1>
+
+<a href="{% url 'blog:seller_create' %}">Create seller</a>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Hiredate</th>
+        <th>Position</th>
+    </tr>
+    {% for seller in sellers %}
+    <tr>
+        <td>{{ seller.first_name }}</td>
+        <td>{{ seller.last_name }}</td>
+        <td>{{ seller.phone }}</td>
+        <td>{{ seller.email }}</td>
+        <td>{{ seller.hire_date }}</td>
+        <td>{{ seller.position }}</td>
+    </tr>
+    {% empty %}
+        <tr><td colspan="4">No sellers</td> </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

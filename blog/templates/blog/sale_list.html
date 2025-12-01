@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sale</title>
+</head>
+<body>
+<h1>Sales</h1>
+
+<a href="{% url 'blog:sale_create' %}">Create sale</a>
+<table border="1">
+    <tr>
+        <th>Customer</th>
+        <th>Seller</th>
+        <th>Product</th>
+        <th>Sale date</th>
+    </tr>
+    {% for sale in sales %}
+    <tr>
+        <td>{{ sale.customer }}</td>
+        <td>{{ sale.seller }}</td>
+        <td>{{ sale.product }}</td>
+        <td>{{ sale.sale_date }}</td>
+    </tr>
+    {% empty %}
+        <tr><td colspan="4">No sales</td> </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

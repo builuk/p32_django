@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New sale</title>
+</head>
+<body>
+    <h1>New sale</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+<a href="{% url 'blog:sale_list' %}">← Back </a>
+</body>
+</html>
