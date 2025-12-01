@@ -35,3 +35,45 @@ def customer_create(request):
     else:
         form = CustomerForm()
     return render(request, "blog/customer_form.html", {"form": form})
+
+def seller_list(request):
+    sellers = Seller.objects.all()
+    return render(request, "blog/seller_list.html", {"sellers": sellers})
+
+def seller_create(request):
+    if request.method == "POST":
+        form = SellerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("blog:seller_list")
+    else:
+        form = SellerForm()
+    return render(request, "blog/seller_form.html", {"form": form})
+
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, "blog/product_list.html", {"products": products})
+
+def product_create(request):
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("blog:product_list")
+    else:
+        form = ProductForm()
+    return render(request, "blog/product_form.html", {"form": form})
+
+def sale_list(request):
+    sales = Sale.objects.all()
+    return render(request, "blog/sale_list.html", {"sales": sales})
+
+def sale_create(request):
+    if request.method == "POST":
+        form = SaleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("blog:sale_list")
+    else:
+        form = SaleForm()
+    return render(request, "blog/sale_form.html", {"form": form})
