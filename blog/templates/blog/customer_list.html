@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+<h1>Customers</h1>
+
+<a href="{% url 'customer_create' %}">Create customer</a>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Phone</th>
+        <th>Email</th>
+    </tr>
+    {% for customer in customers %}
+    <tr>
+        <td>{{ customer.first_name }}</td>
+        <td>{{ customer.last_name }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.email }}</td>
+    </tr>
+    {% empty %}
+        <tr><td colspan="4">No customers</td> </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
