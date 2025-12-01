@@ -7,6 +7,12 @@
 <body>
     <h1>Блог</h1>
 
+    <form method="post">
+    {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Save</button>
+    </form>
+
     {% if posts %}
         <ul>
             {% for post in posts %}
