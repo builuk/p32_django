@@ -41,3 +41,25 @@ class Seller(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} "
+
+class Product(models.Model):
+    name = models.CharField('Title', max_length=200)
+    description = models.TextField()
+    class Meta:
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
+
+    def __str__(self):
+        return f"{self.name}"
+
+class Sale(models.Model):
+    customer = models.ForeignKey(Customer,verbose_name='customer', on_delete=models.CASCADE,related_name='sales')
+    seller = models.ForeignKey(Seller,verbose_name='seller', on_delete=models.PROTECT,related_name='sales')
+    product = models.ForeignKey(Product, verbose_name='product', on_delete=models.PROTECT, related_name='sales')
+    sale_date = models.DateField('date', auto_now_add=True)
+    amount = models.DecimalField('Amount', max_digits=10, decimal_places=2)
+    class Meta:
+        verbose_name = 'Sale'
+        verbose_name_plural = 'Sales'
+    def __str__(self):
+        return f"{self.sale_date} {self.product} -> {self.customer}"
