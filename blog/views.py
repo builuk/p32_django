@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
-from .forms import PostForm
+from .models import Post, Customer, Seller, Product, Sale
+from .forms import PostForm, CustomerForm, SellerForm, ProductForm, SaleForm
 def post_list(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -21,3 +21,17 @@ def post_detail(request, pk: int):
     post = get_object_or_404(Post, pk=pk, is_published=True)
     context = {"post": post}
     return render(request, "blog/post_detail.html", context)
+
+def customer_list(request):
+    customers = Customer.objects.all()
+    return render(request, "blog/customer_list.html", {"customers": customers})
+
+def customer_create(request):
+    if request.method == "POST":
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("blog:customer_list")
+    else:
+        form = CustomerForm()
+    return render(request, "blog/customer_form.html", {"form": form})
